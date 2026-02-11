@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Management - HMS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">HMS Prototype</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patient-registration.html">Patient Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="doctor-management.html">Doctor Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="appointment.html">Appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="medical-records.html">Medical Records</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="billing.html">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pharmacy.html">Pharmacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>Doctor Management</h2>
+        <form id="doctorForm">
+            <div class="mb-3">
+                <label for="doctorName" class="form-label">Doctor Name</label>
+                <input type="text" class="form-control" id="doctorName" required>
+            </div>
+            <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <input type="text" class="form-control" id="department" required>
+            </div>
+            <div class="mb-3">
+                <label for="availableTime" class="form-label">Available Time</label>
+                <input type="text" class="form-control" id="availableTime" placeholder="e.g., 9 AM - 5 PM" required>
+            </div>
+            <div class="mb-3">
+                <label for="assignPatients" class="form-label">Assign Patients</label>
+                <textarea class="form-control" id="assignPatients" rows="3" placeholder="List patient IDs"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Doctor</button>
+        </form>
+        <h3 class="mt-5">Doctor List</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Department</th>
+                    <th>Available Time</th>
+                    <th>Assigned Patients</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="doctorTable">
+                <!-- Sample row -->
+                <tr>
+                    <td>Dr. Smith</td>
+                    <td>Cardiology</td>
+                    <td>9 AM - 5 PM</td>
+                    <td>P001, P002</td>
+                    <td><button class="btn btn-sm btn-warning">Edit</button> <button class="btn btn-sm btn-danger">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('doctorForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('doctorName').value;
+            const dept = document.getElementById('department').value;
+            const time = document.getElementById('availableTime').value;
+            const patients = document.getElementById('assignPatients').value;
+            const table = document.getElementById('doctorTable');
+            const row = table.insertRow();
+            row.innerHTML = `<td>${name}</td><td>${dept}</td><td>${time}</td><td>${patients}</td><td><button class="btn btn-sm btn-warning">Edit</button> <button class="btn btn-sm btn-danger">Delete</button></td>`;
+            alert('Doctor added successfully!');
+            document.getElementById('doctorForm').reset();
+        });
+    </script>
+</body>
+</html>

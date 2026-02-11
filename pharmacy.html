@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy - HMS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">HMS Prototype</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patient-registration.html">Patient Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctor-management.html">Doctor Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="appointment.html">Appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="medical-records.html">Medical Records</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="billing.html">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pharmacy.html">Pharmacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>Pharmacy</h2>
+        <form id="pharmacyForm">
+            <div class="mb-3">
+                <label for="medicineName" class="form-label">Medicine Name</label>
+                <input type="text" class="form-control" id="medicineName" required>
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity" required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" step="0.01" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Medicine</button>
+        </form>
+        <h3 class="mt-5">Medicine Stock</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="pharmacyTable">
+                <!-- Sample row -->
+                <tr>
+                    <td>Aspirin</td>
+                    <td>100</td>
+                    <td>$5.00</td>
+                    <td><button class="btn btn-sm btn-warning" onclick="updateStock(this)">Update Stock</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('pharmacyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('medicineName').value;
+            const qty = document.getElementById('quantity').value;
+            const price = document.getElementById('price').value;
+            const table = document.getElementById('pharmacyTable');
+            const row = table.insertRow();
+            row.innerHTML = `<td>${name}</td><td>${qty}</td><td>$${price}</td><td><button class="btn btn-sm btn-warning" onclick="updateStock(this)">Update Stock</button></td>`;
+            alert('Medicine added successfully!');
+            document.getElementById('pharmacyForm').reset();
+        });
+
+        function updateStock(button) {
+            const row = button.parentElement.parentElement;
+            const qtyCell = row.cells[1];
+            const newQty = prompt('Enter new quantity:', qtyCell.textContent);
+            if (newQty !== null && newQty !== '') {
+                qtyCell.textContent = newQty;
+                alert('Stock updated!');
+            }
+        }
+    </script>
+</body>
+</html>

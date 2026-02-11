@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Module - HMS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">HMS Prototype</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patient-registration.html">Patient Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctor-management.html">Doctor Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="appointment.html">Appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="medical-records.html">Medical Records</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="billing.html">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pharmacy.html">Pharmacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>Appointment Module</h2>
+        <form id="appointmentForm">
+            <div class="mb-3">
+                <label for="selectPatient" class="form-label">Select Patient</label>
+                <select class="form-control" id="selectPatient" required>
+                    <option value="">Choose Patient</option>
+                    <option value="P001">P001 - John Doe</option>
+                    <option value="P002">P002 - Jane Smith</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="selectDoctor" class="form-label">Select Doctor</label>
+                <select class="form-control" id="selectDoctor" required>
+                    <option value="">Choose Doctor</option>
+                    <option value="D001">D001 - Dr. Smith</option>
+                    <option value="D002">D002 - Dr. Johnson</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="time" class="form-label">Time</label>
+                <input type="time" class="form-control" id="time" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm Appointment</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Appointment confirmed successfully!');
+        });
+    </script>
+</body>
+</html>
